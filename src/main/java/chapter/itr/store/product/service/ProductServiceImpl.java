@@ -3,15 +3,18 @@ package chapter.itr.store.product.service;
 import chapter.itr.store.product.entity.Category;
 import chapter.itr.store.product.entity.Product;
 import chapter.itr.store.product.repository.ProductRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
 
+@Service
+@RequiredArgsConstructor
 public class ProductServiceImpl implements  ProductService{
 
-    @Autowired
-    private ProductRepository productRepository;
+    private final ProductRepository productRepository;
 
     @Override
     public List<Product> listAllProduct() {
