@@ -5,6 +5,7 @@ import chapter.itr.store.product.entity.Product;
 import chapter.itr.store.product.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Required;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -36,13 +37,13 @@ public class ProductServiceImpl implements  ProductService{
     @Override
     public Product updateProduct(Product product) {
         Product productDB = getProduct(product.getId());
-        if(null == productDB){
+        if(product == null){
             return null;
         }
         productDB.setName(product.getName());
-        product.setDescription(product.getDescription());
-        product.setCategory(product.getCategory());
-        product.setPrice(product.getPrice());
+        productDB.setDescription(product.getDescription());
+        productDB.setCategory(product.getCategory());
+        productDB.setPrice(product.getPrice());
         return productRepository.save(productDB);
     }
 
